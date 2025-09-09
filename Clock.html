@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock JS</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: #000;
+        color: aqua;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    .clock{
+        display: flex;
+        gap: 10px;
+        font-size: 50px;
+        border: 1px solid grey;
+        padding: 20px 40px;
+        border-radius: 10px;
+        position: relative;
+        box-shadow: 3px 3px 20px grey;
+    }
+    .clock .hrs{
+        color: red;
+    }
+    .clock .mins{
+        color: rgb(14, 219, 151);
+    }
+    .clock .secs{
+        color: blue;
+    }
+    .clock .session{
+        font-size: 12px;
+        position: absolute;
+        right: 20px;
+        bottom: 30px;
+        color: skyblue;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Modern Clock</h1>
+        <div class="clock">
+            <div class="hrs"></div>
+            <span> : </span>
+            <div class="mins"></div>
+            <span> : </span>
+            <div class="secs"></div>
+            <div class="session">AM</div>
+        </div>
+    </div>
+
+    <!---------------------------------- JS  ---------------------------------->
+
+    <script>
+        let hours = document.querySelector(".clock .hrs");
+        let mins = document.querySelector(".clock .mins");
+        let secs = document.querySelector(".clock .secs");
+        let session = document.querySelector(".clock .session");
+
+        const timeFnc = () => {
+
+            let h = new Date().getHours();
+            let m = new Date().getMinutes();
+            let s = new Date().getSeconds();
+
+            hours.textContent = h < 10 ? `0${h}`: h;
+            mins.textContent  = m < 10 ?  `0${m}`: m;
+            secs.textContent  = s < 10 ?  `0${s}`: s;
+        }
+
+        // setInterval(()=>{
+        //     timeFnc()
+        // }, 1000)
+    </script>
+</body>
+</html>
