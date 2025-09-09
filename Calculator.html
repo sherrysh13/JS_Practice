@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Practice</title>
+    <script src="script.js" defer></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+            color: aqua;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container{
+            height: 95%;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            border: 2px solid aqua;
+            border-radius: 10px;
+            overflow: hidden;
+
+        }
+        .inputBox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            margin-top: 50px;
+            font-size: 45px;
+            width: 90%;
+            color: aqua;
+            background: transparent;
+            border: 1px solid grey;
+            border-radius: 2px;
+            text-align: right;
+            padding: 3px 6px;
+        }
+        .buttonsBody{
+            /* margin-top: 50px; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .row{
+            display: flex;
+            gap: 20px;
+        }
+        button{
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 30px;
+            font-weight: bolder;
+            height: 60px;
+            width: 80px;
+            background: rgb(26, 143, 189);
+            cursor: pointer;
+            color: white;
+        }
+        button:hover{
+                background: rgb(4, 116, 160);
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inputBox">
+            <input type="text" value="00">
+        </div>
+        <div class="buttonsBody">
+            <div class="row row0">
+                <button>AC</button>
+                <button>DEL</button>
+                <button>%</button>
+                <button>+</button>
+            </div>
+            <div class="row row1">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>-</button>
+            </div>
+            <div class="row row2">
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>*</button>
+            </div>
+            <div class="row row3">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>/</button>
+            </div>
+            <div class="row row4">
+                <button>0</button>
+                <button>00</button>
+                <button>.</button>
+                <button>=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log("first");
+
+const inputBox = document.querySelector('.inputBox input');
+const buttonsBody = document.querySelector('.buttonsBody');
+const buttons = document.querySelectorAll("button")
+let string = '';
+
+const allButtons = Array.from(buttons)
+
+allButtons.forEach((eachBtn) => {
+    eachBtn.addEventListener("click", (e) => {
+
+        if(e.target.innerHTML === "="){
+            string = eval(string);
+            if(string.toString().includes(".")){
+                string = string.toFixed(4);
+            }
+            inputBox.value = string;
+        }else if(e.target.innerHTML === "AC"){
+            string = 0;
+            inputBox.value = string;
+        }else if(e.target.innerHTML === "DEL"){
+            string = string.substring(0, string.length - 1);
+            inputBox.value = string;
+        }
+        else{
+        string += e.target.innerHTML;
+        inputBox.value = string
+        }
+    })
+
+})
+
+
+    </script>
+</body>
+</html>
