@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop JS</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #000;
+    color: gray;
+    height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+}
+.container{
+    height: 80%;
+    width: 50%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.dragBox, .dropBox{
+    text-align: center;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+    border: 1px solid gainsboro;
+    padding: 20px;
+    border-radius: 7px;
+    height: 300px;
+    width: 200px;
+}
+button{
+    font-size: 28px;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dragBox">
+            <h1>Drag</h1>
+            <div class="dragBoxBtns box">
+                <button draggable="true">Box 1</button>
+                <button draggable="true">Box 2</button>
+                <button draggable="true">Box 3</button>
+                <button draggable="true">Box 4</button>
+                <button draggable="true">Box 5</button>
+            </div>
+        </div>
+        <div class="dropBox">
+            <h1>Drop</h1>
+            <div class="dropBoxBtns box"></div>
+        </div>
+    </div>
+    <script>
+        let dragBoxBtns = document.querySelector(".dragBoxBtns")
+        let dropBoxBtns = document.querySelector(".dropBoxBtns")
+        let btns = document.querySelectorAll("button")
+        let selectedBtn = null;
+
+        btns.forEach((eachBtn)=>{
+            eachBtn.addEventListener("dragstart", (e)=>{
+                selectedBtn = e.target;
+            })
+        })
+
+        const allowDrop = (e) => {
+            e.preventDefault();
+        }
+
+        const handleDrop = (container) => {
+            if(selectedBtn){
+                container.append(selectedBtn);
+                selectedBtn = null;
+            }
+        }
+
+        dragBoxBtns.addEventListener("dragover", allowDrop);
+        dragBoxBtns.addEventListener("drop", () => handleDrop(dragBoxBtns));
+
+        dropBoxBtns.addEventListener("dragover", allowDrop);
+        dropBoxBtns.addEventListener("drop", () => handleDrop(dropBoxBtns));
+    </script>
+
+</body>
+</html>
