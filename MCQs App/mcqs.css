@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #000;
+    color: palegreen;
+    height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+}
+.container{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* border: 1px solid gray; */
+}
+.mcqsApp{
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid yellow; */
+    gap: 20px;
+    position: relative;
+}
+button{
+    background: palegreen;
+    color: #000;
+    font-weight: bolder;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: translateY(-20px);
+}
+button:hover{
+    background: rgb(80, 227, 80);
+}
+.eachMCQ{
+    height: 90%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid palegreen;
+    padding: 30px;
+    border-radius: 10px;
+}
+.eachMCQ .question{
+    height: 30%;
+    width: 100%;
+    overflow: auto;
+}
+.eachMCQ .answers{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.eachMCQ .opt{
+    background-color: rgb(89, 218, 89);
+    color: #000;
+    font-size: 20px;
+    border: 1px solid palegreen;
+    padding: 10px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.eachMCQ .opt:hover{
+    background: #000000;
+    color: palegreen;
+}
+.finalMsg{
+    display: none;
+    position: absolute;
+    top: 50%;
+}
+.restartBtn{
+    display: none;
+    position: absolute;
+    top: 70%;
+}
